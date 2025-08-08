@@ -30,3 +30,12 @@ This project is a **stylish, elegant sign-up form** built as part of the Odin Pr
 
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
+
+### Credits
+Background images sourced from Unsplash (or your chosen source).
+
+Logo and branding designed by Glam by Fatma.
+
+Inspired by the Odin Project’s Intermediate HTML and CSS curriculum.
+
+
