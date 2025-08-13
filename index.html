@@ -11,6 +11,8 @@
 <body>
 
   <div class="signup-container">
+
+    <!-- SIDEBAR WITH SLIDER -->
     <aside class="image-sidebar">
       <img src="images/fatmalogo.jpg" alt="Glam by Fatma Logo" class="sidebar-logo" />
       <div class="slider">
@@ -19,14 +21,19 @@
         <img src="images/hair.webp" alt="Hair Styling" class="slide" />
         <img src="images/makeup2.webp" alt="Makeup Art 2" class="slide" />
       </div>
+      <div class="sidebar-overlay">
+        <img src="images/fatmalogo.jpg" alt="Glam by Fatma Logo" class="logo" />
+      </div>
     </aside>
 
-    <div class="overlay form-overlay">
-      <img src="images/fatmalogo.jpg" alt="Glam by Fatma Logo" class="logo" />
-    </div>
-  <main class="form-section">
-    <form id="signup-form" novalidate>
-      <h2>Glam by Fatma - Signup-Form</h2>
+    <!-- FORM SECTION -->
+    <main class="form-section">
+      <div class="form-overlay">
+        <img src="images/fatmalogo.jpg" alt="Glam by Fatma Logo" class="logo" />
+      </div>
+
+      <form id="signup-form" novalidate>
+        <h2>Glam by Fatma - Signup Form</h2>
 
         <label for="full-name">Full Name</label>
         <input type="text" id="full-name" name="full-name" placeholder="Your full name" required />
@@ -46,13 +53,14 @@
       </form>
     </main>
   </div>
-<footer>
-  Created by 
-  <a href="https://github.com/hussein-salim25" target="_blank">
-    Hussein Salim
-  </a> 
-  for Odin Projects
-</footer>
+
+  <footer>
+    Created by 
+    <a href="https://github.com/hussein-salim25" target="_blank">
+      Hussein Salim
+    </a> 
+    for Odin Projects
+  </footer>
 
   <script src="script.js"></script>
 </body>

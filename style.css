@@ -8,130 +8,82 @@
 
 body, html {
   height: 100%;
-  background: #000000; /* Pure black for ultimate sleekness */
+  background: #000;
   color: #f7efe2;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .signup-container {
   display: flex;
+  flex-direction: row;
   height: 100vh;
-  width: 100vw;
   max-width: 1200px;
   margin: 0 auto;
-  background: #0a0a0a; /* Very dark charcoal, nearly black */
+  background: #0a0a0a;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.9); /* deeper shadow */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9);
 }
 
 /* SIDEBAR WITH SLIDER */
 .image-sidebar {
   position: relative;
   width: 420px;
+  flex-shrink: 0;
   height: 100%;
   overflow: hidden;
-  flex-shrink: 0;
-  background: #000000; /* Pure black for sidebar */
-  
-  /* Reduced inset glow: less intense, smaller spread */
-  box-shadow: inset 0 0 30px 6px rgba(212, 185, 79, 0.15); /* softer gold glow */
-
-  border-right: 2px solid rgba(212, 185, 79, 0.8); /* keep metallic gold border */
+  background: #000;
+  box-shadow: inset 0 0 30px 6px rgba(212,185,79,0.15);
+  border-right: 2px solid rgba(212,185,79,0.8);
 }
 
-/* Add a subtle gradient overlay on top of images, inside sidebar */
 .image-sidebar::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none; /* so it doesn’t block clicks */
-  
-  /* gradient from transparent at top to subtle gold near bottom */
-  background: linear-gradient(
-    to bottom, 
-    rgba(0,0,0,0) 0%, 
-    rgba(212, 185, 79, 0.12) 80%, 
-    rgba(212, 185, 79, 0.2) 100%
-  );
-  z-index: 1;
-}
-.signup-container {
-  position: relative; /* to position absolute children */
+  top:0; left:0; width:100%; height:100%;
+  pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(212,185,79,0.12) 80%, rgba(212,185,79,0.2) 100%);
+  z-index:1;
 }
 
-.top-gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px; /* height of the gradient area */
-  pointer-events: none; /* so it doesn't block clicks */
-  z-index: 3; /* above images and overlays */
-
-  background: linear-gradient(
-    to right,
-    rgba(212, 185, 79, 0.25) 0%,    /* stronger gold on sidebar left */
-    rgba(212, 185, 79, 0.1) 40%,    /* fading gold towards middle */
-    rgba(212, 185, 79, 0) 100%      /* transparent at right end */
-  );
-}
-
-/* Make sure slider images stack below overlay and gradient */
 .slider img {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  top:0; left:0;
+  width:100%; height:100%;
   object-fit: cover;
-  opacity: 0;
+  opacity:0;
   transition: opacity 1.2s ease-in-out;
-  user-select: none;
-  pointer-events: none;
-  z-index: 0; /* behind overlay and gradient */
+  pointer-events:none;
+  z-index:0;
 }
-
 .slider img.active {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 0;
-}
-.logo {
-  filter:
-    drop-shadow(0 0 4px #d4b94f)
-    drop-shadow(0 0 8px #bfa448);
-  max-width: 140px;
-  margin-bottom: 22px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  opacity:1;
+  pointer-events:auto;
 }
 
-/* Overlay on top of everything */
-.overlay {
+.sidebar-logo {
   position: absolute;
-  bottom: 50px;
-  left: 30px;
-  right: 30px;
-  background: rgba(0, 0, 0, 0.75);
-  padding: 30px 35px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(212, 185, 79, 0.9);
-  z-index: 2; /* topmost */
+  top: 18px;
+  right: 22px;
+  width: 70px;
+  opacity: 0.35;
+  z-index:5;
+  pointer-events:none;
+  filter: drop-shadow(0 0 6px #d4b94f) drop-shadow(0 0 12px #bfa448);
 }
+
 /* FORM SECTION */
 .form-section {
-  position: relative; /* Needed for absolute positioning of overlay */
   flex: 1;
-  background: #0a0a0a; /* very dark almost black */
-  color: #d4b94f; /* metallic gold font color */
+  background: #0a0a0a;
+  color: #d4b94f;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 50px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+  position: relative;
 }
 
 form {
@@ -157,68 +109,62 @@ label {
   display: block;
   margin-bottom: 6px;
 }
-/* Inputs background and text color */
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 20px;
-  border: 1.8px solid #bfa448; /* metallic gold border */
+  border: 1.8px solid #bfa448;
   border-radius: 8px;
   font-size: 1rem;
-  font-family: inherit;
-  background: #1a1a1a; /* dark input background */
-  color: #d4b94f; /* metallic gold text */
+  background: #1a1a1a;
+  color: #d4b94f;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   outline-offset: 3px;
 }
 
 input::placeholder {
-  color: #a68e3b; /* lighter gold placeholder */
+  color: #a68e3b;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
+input:focus {
   border-color: #d4b94f;
-  box-shadow: 0 0 10px rgba(212, 185, 79, 0.7);
+  box-shadow: 0 0 10px rgba(212,185,79,0.7);
   background: #252525;
 }
 
-/* Invalid password border stays red */
 input[type="password"]:invalid {
   border-color: #c53030;
   background: #2a1f1f;
   color: #e7a9a9;
 }
-/* Button */
+
 .btn-create {
   width: 100%;
   background: linear-gradient(135deg, #bfa448 0%, #d4b94f 100%);
-  color: #111111;
+  color: #111;
   font-weight: 800;
   padding: 14px 0;
   font-size: 1.1rem;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(212, 185, 79, 0.9);
+  box-shadow: 0 8px 20px rgba(212,185,79,0.9);
   transition: background 0.4s ease, box-shadow 0.5s ease;
   letter-spacing: 1.2px;
-  user-select: none;
 }
 
 .btn-create:hover,
 .btn-create:focus {
   background: linear-gradient(135deg, #d4b94f 0%, #bfa448 100%);
-  box-shadow: 0 15px 40px rgba(212, 185, 79, 1);
+  box-shadow: 0 15px 40px rgba(212,185,79,1);
   outline: none;
 }
 
-/* Error message styling */
 .error-message {
-  color: #c53030; /* red error color */
+  color: #c53030;
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 0.9rem;
@@ -226,138 +172,51 @@ input[type="password"]:invalid {
   text-align: center;
 }
 
-/* Scrollbar gold styling */
+/* OVERLAYS */
+.overlay,
+.form-overlay {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  background: rgba(0,0,0,0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(212,185,79,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index:10;
+}
+.overlay .logo,
+.form-overlay .logo {
+  max-width: 60px;
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* SCROLLBAR */
 .form-section::-webkit-scrollbar {
   width: 8px;
 }
-
 .form-section::-webkit-scrollbar-thumb {
   background: #d4b94f;
   border-radius: 10px;
 }
-
 .form-section::-webkit-scrollbar-track {
   background: #fdf8e1;
 }
 
-/* New form overlay style */
-.form-overlay {
-  position: absolute;
-  top: 0; /* Start at the top of the form-section */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 0 18px rgba(212, 185, 79, 0.7);
-  z-index: 10; /* Make sure it's above the form */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  padding: 0;
-}
-
-.form-overlay .logo {
-  max-width: 60px;
-  margin: 0;
-  display: block;
-}
-
-/* Sidebar logo style */
-.sidebar-logo {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  width: 70px;
-  height: auto;
-  opacity: 0.35; /* transparent effect */
-  z-index: 5;
-  pointer-events: none; /* does not block slider interaction */
-  filter:
-    drop-shadow(0 0 6px #d4b94f)
-    drop-shadow(0 0 12px #bfa448);
-}
-
-/* New sidebar overlay style */
-.sidebar-overlay {
-  position: absolute;
-  left: 50%;
-  bottom: 30px;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 0 18px rgba(212, 185, 79, 0.7);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  padding: 0;
-}
-
-.sidebar-overlay .logo {
-  max-width: 60px;
-  margin: 0;
-  display: block;
-}
-
-/* Responsive */
-@media (max-width: 850px) {
-  .signup-container {
-    flex-direction: column;
-    max-width: 400px;
-    height: auto;
-    border-radius: 0;
-  }
-  .image-sidebar {
-    width: 100%;
-    height: 250px;
-    border-right: none;
-    border-bottom: 2px solid #d4b94f;
-  }
-  .form-section {
-    padding: 30px 20px;
-    height: auto;
-  }
-}
-@media (max-width: 500px) {
-  .image-sidebar {
-    height: 200px;
-  }
-  .overlay h1 {
-    font-size: 1.8rem;
-  }
-  .overlay p {
-    font-size: 0.9rem;
-  }
-  form h2 {
-    font-size: 1.8rem;
-  }
-}
-@media (max-width: 400px) {
-  .signup-container {
-    width: 100%;
-    height: 100%;
-  }
-  .image-sidebar {
-    height: 180px;
-  }
-  .overlay {
-    bottom: 20px;
-    left: 15px;
-    right: 15px;
-    padding: 20px 25px;
-  }
-  .logo {
-    max-width: 120px;
-    margin-bottom: 15px;
-  }
-}
-/* General mobile fix for smaller devices */
+/* RESPONSIVE */
 @media (max-width: 850px) {
   .signup-container {
     flex-direction: column;
@@ -365,64 +224,31 @@ input[type="password"]:invalid {
     height: auto;
     border-radius: 0;
   }
-
   .image-sidebar {
     width: 100%;
-    height: 200px; /* reduced for mobile */
+    height: 200px;
     border-right: none;
     border-bottom: 2px solid #d4b94f;
-    position: relative;
   }
-
   .form-section {
     padding: 30px 20px;
     height: auto;
-    overflow: visible;
-  }
-
-  .overlay {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    transform: none;
-    margin: 0 auto 20px;
-    width: 80px;
-    height: 80px;
-    padding: 10px;
-  }
-
-  .overlay .logo {
-    max-width: 50px;
   }
 }
 
-/* Extra small devices */
 @media (max-width: 500px) {
-  form h2 {
-    font-size: 1.6rem;
+  form h2 { font-size: 1.6rem; }
+  .overlay, .form-overlay {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    padding: 15px 20px;
   }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    padding: 10px 12px;
-    font-size: 0.95rem;
-  }
-
-  .btn-create {
-    font-size: 1rem;
-    padding: 12px 0;
-  }
+  .overlay .logo, .form-overlay .logo { max-width: 50px; }
+  .image-sidebar { height: 180px; }
 }
 
-/* Footer for small devices */
-footer {
-  padding: 15px;
-  font-size: 0.85rem;
-  text-align: center;
-}
-.form-section {
-  overflow-y: auto; /* allows scrolling if form is taller than screen */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+@media (max-width: 400px) {
+  .signup-container { width: 100%; height: auto; }
+  .image-sidebar { height: 160px; }
 }
