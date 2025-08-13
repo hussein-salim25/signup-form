@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // Image slider for sidebar
 const slides = document.querySelectorAll('.slider img');
 let currentSlide = 0;

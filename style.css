@@ -357,3 +357,72 @@ input[type="password"]:invalid {
     margin-bottom: 15px;
   }
 }
+/* General mobile fix for smaller devices */
+@media (max-width: 850px) {
+  .signup-container {
+    flex-direction: column;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .image-sidebar {
+    width: 100%;
+    height: 200px; /* reduced for mobile */
+    border-right: none;
+    border-bottom: 2px solid #d4b94f;
+    position: relative;
+  }
+
+  .form-section {
+    padding: 30px 20px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .overlay {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+  }
+
+  .overlay .logo {
+    max-width: 50px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 500px) {
+  form h2 {
+    font-size: 1.6rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .btn-create {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+/* Footer for small devices */
+footer {
+  padding: 15px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+.form-section {
+  overflow-y: auto; /* allows scrolling if form is taller than screen */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
